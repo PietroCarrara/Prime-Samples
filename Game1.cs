@@ -52,10 +52,13 @@ namespace PrimeSamples
 
 			var anim = new SpriteSheet(sprite, atlas);
 	
-			anim.Add("walk", 21, 30, 1);
+			anim.Add("walk", 20, 30, 0.15f);
 
 			anim.Play("walk");
 				
+			anim.Width = 720;
+			anim.Height = 720;
+
 			Add(anim);
 		}
 
