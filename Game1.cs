@@ -27,7 +27,7 @@ namespace PrimeSamples
 		{
 			base.Update();
 
-			if(Input.IsKeyPressed(Keys.Enter))
+			if(Input.IsKeyDown(Keys.Enter))
 			{
 				Add(new Player());
 			}
@@ -43,6 +43,8 @@ namespace PrimeSamples
 	{
 		public override void Initialize()
 		{
+			base.Initialize();
+
 			var tx = Scene.Content.Load<Texture2D>("player");
 				
 			Add(new Sprite(tx));
@@ -50,6 +52,8 @@ namespace PrimeSamples
 
 		public override void Update()
 		{
+			base.Update();
+
 			var pos = this.Position;
 	
 			if(Input.IsKeyDown(Keys.L))
@@ -76,6 +80,11 @@ namespace PrimeSamples
 			{
 				this.Destroy();
 			}
+		}
+
+		public override void OnDestroy()
+		{
+			GetComponent<Sprite>().Tex.Dispose();
 		}
 	}
 }
