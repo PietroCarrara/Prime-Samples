@@ -10,10 +10,11 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:../../packages/MonoGame.Extended.Content.Pipeline.0.6.602/tools/MonoGame.Extended.Content.Pipeline.dll
 
 #---------------------------------- Content ---------------------------------#
 
-#begin player.png
+#begin rogue spritesheet calciumtrice.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -23,5 +24,10 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:player.png
+/build:rogue spritesheet calciumtrice.png
+
+#begin map.json
+/importer:TexturePackerJsonImporter
+/processor:TexturePackerProcessor
+/build:map.json
 

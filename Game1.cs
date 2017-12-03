@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Prime;
 using Prime.Graphics;
+using System.Collections.Generic;
+using MonoGame.Extended.TextureAtlases;
 
 namespace PrimeSamples
 {
@@ -45,9 +47,16 @@ namespace PrimeSamples
 		{
 			base.Initialize();
 
-			var tx = Scene.Content.Load<Texture2D>("player");
+			var sprite = Scene.Content.Load<Texture2D>("spritesheet");
+			var atlas = Scene.Content.Load<TextureAtlas>("map");
+
+			var anim = new SpriteSheet(sprite, atlas);
+	
+			anim.Add("walk", 21, 30, 1);
+
+			anim.Play("walk");
 				
-			Add(new Sprite(tx));
+			Add(anim);
 		}
 
 		public override void Update()
@@ -84,6 +93,9 @@ namespace PrimeSamples
 
 		public override void OnDestroy()
 		{
+			// We are gonna use it again, but it's here just for demonstration purposes.
+			// If you plan on using the texture again, don't dispose of it!
+			// The effects of doing so can be seen by running this example
 			GetComponent<Sprite>().Tex.Dispose();
 		}
 	}
