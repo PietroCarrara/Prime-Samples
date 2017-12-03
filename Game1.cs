@@ -43,6 +43,8 @@ namespace PrimeSamples
 
 	class Player : Entity
 	{
+		private SpriteSheet anim;
+
 		public override void Initialize()
 		{
 			base.Initialize();
@@ -50,9 +52,10 @@ namespace PrimeSamples
 			var sprite = Scene.Content.Load<Texture2D>("spritesheet");
 			var atlas = Scene.Content.Load<TextureAtlas>("map");
 
-			var anim = new SpriteSheet(sprite, atlas);
+			anim = new SpriteSheet(sprite, atlas);
 	
 			anim.Add("walk", 20, 30, 0.15f);
+			anim.Add("attack", 30, 40, 0.15f, false);
 
 			anim.Play("walk");
 				
@@ -91,6 +94,13 @@ namespace PrimeSamples
 			if(Input.IsKeyPressed(Keys.X))
 			{
 				this.Destroy();
+			}
+
+			if(Input.IsKeyPressed(Keys.Z))
+			{
+				anim.Play("attack", () => {
+							anim.Play("walk");
+						});
 			}
 		}
 
