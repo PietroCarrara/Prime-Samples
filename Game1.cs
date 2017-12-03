@@ -22,6 +22,21 @@ namespace PrimeSamples
 
 			Add(new Player());
 		}
+
+		public override void Update()
+		{
+			base.Update();
+
+			if(Input.IsKeyPressed(Keys.Enter))
+			{
+				Add(new Player());
+			}
+
+			if (Input.IsKeyDown(Keys.Escape))
+			{
+				Game.Exit();
+			}
+		}
 	}
 
 	class Player : Entity
@@ -56,6 +71,11 @@ namespace PrimeSamples
 			}
 
 			this.Position = pos;
+
+			if(Input.IsKeyPressed(Keys.X))
+			{
+				this.Destroy();
+			}
 		}
 	}
 }
